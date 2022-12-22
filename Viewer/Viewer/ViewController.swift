@@ -27,11 +27,8 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
-//      pictures = pictures.sorted(by: { item1, item2 in
-//          item1 < item2
-//      })
+        
         pictures = pictures.sorted(by: { $0 < $1 } )
-//      print(pictures)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,7 +46,8 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
-            // 3.
+            
+            // 3: set "Detail" view controller properties
             vc.selectedPictureNumber = (indexPath.row) + 1
             vc.totalPictures = pictures.count
 
